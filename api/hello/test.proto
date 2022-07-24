@@ -1,0 +1,11 @@
+syntax = "proto3";
+package wwtlf.v1;
+option go_package = "github.com/WWtLF/hello_grpc/hello";
+
+message Test {
+    string test = 1;
+}
+
+service Ping {
+    rpc SayHello (Test) returns (stream Test) {}
+}
