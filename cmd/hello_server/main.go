@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net"
+	"os"
 	"time"
 
 	h "github.com/WWtLF/hello_grpc/pkg/api/hello"
@@ -41,6 +42,7 @@ func send(req string, text string, p h.Ping_SayHelloServer) {
 
 func main() {
 
+	fmt.Println("My POD IP is ", os.Getenv("POD_IP"))
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", 50051))
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)

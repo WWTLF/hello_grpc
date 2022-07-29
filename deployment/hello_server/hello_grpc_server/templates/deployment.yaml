@@ -47,6 +47,11 @@ spec:
           #     port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          env:
+            - name: POD_IP              
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
